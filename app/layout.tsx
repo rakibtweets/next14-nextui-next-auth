@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import React from 'react';
 import { Providers } from './providers';
+import NavMenu from '@/component/NavMenu/NavMenu';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +20,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers
+          themeProps={{
+            attribute: 'class',
+            defaultTheme: 'dark',
+            themes: ['light', 'dark']
+          }}
+        >
+          <NavMenu />
+          {children}
+        </Providers>
       </body>
     </html>
   );
